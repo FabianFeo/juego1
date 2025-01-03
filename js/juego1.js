@@ -1,8 +1,17 @@
+let ataqueJugador;
+
 function iniciarJuego() {
   alert("Bienvenido a la primera versión del juego");
 
   let botonMascotaJugagor = document.getElementById("boton-mascota");
   botonMascotaJugagor.addEventListener("click", seleccionarMascotaJugador);
+
+  let botonFuego= document.getElementById("boton-fuego");
+  botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
+  botonAgua.addEventListener("click", ataqueAgua);
+  let botonPlanta = document.getElementById("boton-planta");
+  botonPlanta.addEventListener("click", ataquePlanta);
 }
 
 function seleccionarMascotaJugador() {
@@ -66,6 +75,22 @@ function seleccionarMascotaRival() {
 
   spanMascotaRival.innerHTML = mascotaRivalNombre;
 }
+
+function ataqueFuego(){
+  ataqueJugador = "Fuego";
+  alert(ataqueJugador);
+}
+
+function ataqueAgua(){
+  ataqueJugador = "Agua";
+  alert(ataqueJugador);
+}
+
+function ataquePlanta(){
+  ataqueJugador = "Planta";
+  alert(ataqueJugador);
+}
+
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
