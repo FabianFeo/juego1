@@ -1,12 +1,13 @@
 let ataqueJugador;
+let ataqueRival; // Variable global para almacenar el ataque del rival
 
 function iniciarJuego() {
   alert("Bienvenido a la primera versión del juego");
 
-  let botonMascotaJugagor = document.getElementById("boton-mascota");
-  botonMascotaJugagor.addEventListener("click", seleccionarMascotaJugador);
+  let botonMascotaJugador = document.getElementById("boton-mascota");
+  botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
-  let botonFuego= document.getElementById("boton-fuego");
+  let botonFuego = document.getElementById("boton-fuego");
   botonFuego.addEventListener("click", ataqueFuego);
   let botonAgua = document.getElementById("boton-agua");
   botonAgua.addEventListener("click", ataqueAgua);
@@ -49,51 +50,79 @@ function seleccionarMascotaJugador() {
 }
 
 function seleccionarMascotaRival() {
-  let ataqueRival = random(1, 6);
+  let numeroAleatorio = random(1, 6);
   let spanMascotaRival = document.getElementById("mascota-rival");
-  let mascotaRivalNombre;
 
-  if (ataqueRival == 1) {
-    mascotaRivalNombre = "Hipoge";
+  if (numeroAleatorio == 1) {
+    spanMascotaRival.innerHTML = "Hipoge";
     alert("El rival ha seleccionado a Hipoge");
-  } else if (ataqueRival == 2) {
-    mascotaRivalNombre = "Capichu";
+  } else if (numeroAleatorio == 2) {
+    spanMascotaRival.innerHTML = "Capichu";
     alert("El rival ha seleccionado a Capichu");
-  } else if (ataqueRival == 3) {
-    mascotaRivalNombre = "Ratigueya";
+  } else if (numeroAleatorio == 3) {
+    spanMascotaRival.innerHTML = "Ratigueya";
     alert("El rival ha seleccionado a Ratigueya");
-  } else if (ataqueRival == 4) {
-    mascotaRivalNombre = "Langostelvis";
+  } else if (numeroAleatorio == 4) {
+    spanMascotaRival.innerHTML = "Langostelvis";
     alert("El rival ha seleccionado a Langostelvis");
-  } else if (ataqueRival == 5) {
-    mascotaRivalNombre = "Tucalmat";
+  } else if (numeroAleatorio == 5) {
+    spanMascotaRival.innerHTML = "Tucalmat";
     alert("El rival ha seleccionado a Tucalmat");
-  } else if (ataqueRival == 6) {
-    mascotaRivalNombre = "Cucarachon";
+  } else if (numeroAleatorio == 6) {
+    spanMascotaRival.innerHTML = "Cucarachon";
     alert("El rival ha seleccionado a Cucarachon");
   }
-
-  spanMascotaRival.innerHTML = mascotaRivalNombre;
 }
 
-function ataqueFuego(){
-  ataqueJugador = "Fuego";
+function ataqueFuego() {
+  ataqueJugador = "Has atacado con Fuego";
   alert(ataqueJugador);
+  ataqueEnemigo();
 }
 
-function ataqueAgua(){
-  ataqueJugador = "Agua";
+function ataqueAgua() {
+  ataqueJugador = "Has atacado con Agua";
   alert(ataqueJugador);
+  ataqueEnemigo();
 }
 
-function ataquePlanta(){
-  ataqueJugador = "Planta";
+function ataquePlanta() {
+  ataqueJugador = "Has atacado con Planta";
   alert(ataqueJugador);
+  ataqueEnemigo();
 }
 
+function ataqueEnemigo() {
+  let numeroAleatorio = random(1, 3);
+
+  if (numeroAleatorio == 1) {
+    ataqueRival = "Fuego";
+  } else if (numeroAleatorio == 2) {
+    ataqueRival = "Agua";
+  } else if (numeroAleatorio == 3) {
+    ataqueRival = "Planta";
+  }
+
+  alert("El rival ha atacado con " + ataqueRival);
+  crearMensaje();
+}
+
+function crearMensaje() {
+  let sectionMensajes = document.getElementById("mensajes");
+  let mensaje = document.createElement("p");
+  mensaje.innerHTML =
+    "Has atacado con " +
+    ataqueJugador +
+    " y el rival ha atacado con " +
+    ataqueRival +
+    ". Pendiente resultado";
+
+  sectionMensajes.appendChild(mensaje);
+}
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 window.addEventListener("load", iniciarJuego);
+
