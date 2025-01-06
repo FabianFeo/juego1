@@ -75,20 +75,20 @@ function seleccionarMascotaRival() {
 }
 
 function ataqueFuego() {
-  ataqueJugador = "Has atacado con Fuego";
-  alert(ataqueJugador);
+  ataqueJugador = "Fuego 🔥";
+  alert("Has atacado con " + ataqueJugador);
   ataqueEnemigo();
 }
 
 function ataqueAgua() {
-  ataqueJugador = "Has atacado con Agua";
-  alert(ataqueJugador);
+  ataqueJugador = "Agua 💦";
+  alert("Has atacado con " + ataqueJugador);
   ataqueEnemigo();
 }
 
 function ataquePlanta() {
-  ataqueJugador = "Has atacado con Planta";
-  alert(ataqueJugador);
+  ataqueJugador = "Planta 🌱";
+  alert("Has atacado con " + ataqueJugador);
   ataqueEnemigo();
 }
 
@@ -96,26 +96,48 @@ function ataqueEnemigo() {
   let numeroAleatorio = random(1, 3);
 
   if (numeroAleatorio == 1) {
-    ataqueRival = "Fuego";
+    ataqueRival = "Fuego 🔥";
   } else if (numeroAleatorio == 2) {
-    ataqueRival = "Agua";
+    ataqueRival = "Agua 💦";
   } else if (numeroAleatorio == 3) {
-    ataqueRival = "Planta";
+    ataqueRival = "Planta 🌱";
   }
 
   alert("El rival ha atacado con " + ataqueRival);
-  crearMensaje();
+  combate(); // Llamar a combate después de definir ambos ataques
 }
 
-function crearMensaje() {
+function combate() {
+  let resultado;
+
+  if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Agua 💦") {
+    resultado = "Has perdido";
+  } else if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Planta 🌱") {
+    resultado = "Has ganado";
+  } else if (ataqueJugador === "Agua 💦" && ataqueRival === "Fuego 🔥") {
+    resultado = "Has ganado";
+  } else if (ataqueJugador === "Agua 💦" && ataqueRival === "Planta 🌱") {
+    resultado = "Has perdido";
+  } else if (ataqueJugador === "Planta 🌱" && ataqueRival === "Fuego 🔥") {
+    resultado = "Has perdido";
+  } else if (ataqueJugador === "Planta 🌱" && ataqueRival === "Agua 💦") {
+    resultado = "Has ganado";
+  } else {
+    resultado = "Empate";
+  }
+
+  crearMensaje(resultado);
+}
+
+function crearMensaje(resultado) {
   let sectionMensajes = document.getElementById("mensajes");
   let mensaje = document.createElement("p");
-  mensaje.innerHTML =
-    "Has atacado con " +
+  mensaje.innerHTML = "Has atacado con " +
     ataqueJugador +
     " y el rival ha atacado con " +
     ataqueRival +
-    ". Pendiente resultado";
+    ". " +
+    resultado;
 
   sectionMensajes.appendChild(mensaje);
 }
@@ -125,4 +147,5 @@ function random(min, max) {
 }
 
 window.addEventListener("load", iniciarJuego);
+
 
