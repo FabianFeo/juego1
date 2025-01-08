@@ -1,8 +1,16 @@
 let ataqueJugador;
 let ataqueRival; // Variable global para almacenar el ataque del rival
+let vidasJugador = 3;
+let vidasRival = 3;
 
 function iniciarJuego() {
   alert("Bienvenido a la primera versión del juego");
+
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  sectionSeleccionarAtaque.style.display = "none";
+
+  let sectionReiniciar = document.getElementById("reiniciar");
+  sectionReiniciar.style.display = "none";
 
   let botonMascotaJugador = document.getElementById("boton-mascota");
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
@@ -13,9 +21,25 @@ function iniciarJuego() {
   botonAgua.addEventListener("click", ataqueAgua);
   let botonPlanta = document.getElementById("boton-planta");
   botonPlanta.addEventListener("click", ataquePlanta);
+
+
+  let botonReiniciar = document.getElementById("boton-reiniciar");
+  botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function seleccionarMascotaJugador() {
+
+  let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
+  sectionSeleccionarMascota.style.display = "none";
+
+
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  sectionSeleccionarAtaque.style.display = "block";
+
+  
+
+
+
   let inputHipoge = document.getElementById("hipoge");
   let inputCapichu = document.getElementById("capichu");
   let inputRatigueya = document.getElementById("ratigueya");
@@ -108,25 +132,43 @@ function ataqueEnemigo() {
 }
 
 function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasRival = document.getElementById("vidas-rival");
   let resultado;
 
   if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Agua 💦") {
     resultado = "Has perdido";
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
   } else if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Planta 🌱") {
     resultado = "Has ganado";
+    vidasRival--;
+    spanVidasRival.innerHTML = vidasRival;
   } else if (ataqueJugador === "Agua 💦" && ataqueRival === "Fuego 🔥") {
     resultado = "Has ganado";
+    vidasRival--;
+    spanVidasRival.innerHTML = vidasRival;
   } else if (ataqueJugador === "Agua 💦" && ataqueRival === "Planta 🌱") {
     resultado = "Has perdido";
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
   } else if (ataqueJugador === "Planta 🌱" && ataqueRival === "Fuego 🔥") {
     resultado = "Has perdido";
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
   } else if (ataqueJugador === "Planta 🌱" && ataqueRival === "Agua 💦") {
     resultado = "Has ganado";
+    vidasRival--;
+    spanVidasRival.innerHTML = vidasRival;
   } else {
     resultado = "Empate";
   }
 
   crearMensaje(resultado);
+
+  revisarVidas();
+
+
 }
 
 function crearMensaje(resultado) {
@@ -139,7 +181,48 @@ function crearMensaje(resultado) {
     ". " +
     resultado;
 
+
+
   sectionMensajes.appendChild(mensaje);
+}
+
+function revisarVidas() {
+  if (vidasJugador === 0) {
+    crearMensajeFinal("Has perdido el juego");
+    deshabilitarBotones(); // Deshabilita los botones de ataque
+  } else if (vidasRival === 0) {
+    crearMensajeFinal("Has ganado el juego");
+    deshabilitarBotones(); // Deshabilita los botones de ataque
+  }
+}
+
+
+function deshabilitarBotones() {
+  document.getElementById("boton-fuego").disabled = true;
+  document.getElementById("boton-agua").disabled = true;
+  document.getElementById("boton-planta").disabled = true;
+}
+
+
+function crearMensajeFinal(resultadoFinal) {
+  let sectionMensajes = document.getElementById("mensajes");
+
+  
+
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML = resultadoFinal;
+  parrafo.style.fontWeight = "bold";
+  parrafo.style.color = "red";
+  sectionMensajes.appendChild(parrafo);
+
+  let botonReiniciar = document.getElementById("reiniciar");
+  botonReiniciar.style.display = "block";
+}
+
+
+
+function reiniciarJuego (){
+  location.reload();
 }
 
 function random(min, max) {
