@@ -4,7 +4,7 @@ let vidasJugador = 3;
 let vidasRival = 3;
 
 function iniciarJuego() {
-  alert("Bienvenido a la primera versión del juego");
+  
 
   let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
   sectionSeleccionarAtaque.style.display = "none";
