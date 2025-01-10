@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juego # 1</title>
-    <script src="js/juego1.js"></script>
-    <link rel="stylesheet" href="css/juego1.css" />
-    
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego # 1</title>
+  <script src="js/juego1.js"></script>
+  <link rel="stylesheet" href="css/juego1.css" />
+
+</head>
+
+<body>
+
+
+  <section id="seleccionar-mascota">
     <h1 class="titulo">Kopemon! 🌱🔥💦</h1>
-
-    <section id="seleccionar-mascota">
-      <h2>Elige a tu mascota:</h2>
+    <h2>Elige a tu mascota:</h2>
 
 
 
 
 
-      <input type="radio" name="mascota" id="hipoge" />
-      <label for="hipoge">Hipoge</label>
-      <input type="radio" name="mascota" id="capichu" />
-      <label for="capichu">Capichu</label>
-      <input type="radio" name="mascota" id="ratigueya" />
-      <label for="ratigueya">Ratigueya</label>
-      <input type="radio" name="mascota" id="langostelvis" />
-      <label for="langostelvis">Langostelvis</label>
-      <input type="radio" name="mascota" id="tucalmat" />
-      <label for="tucalmat">Tucalmat</label>
-      <input type="radio" name="mascota" id="cucarachon" />
-      <label for="cucarachon">Cucarachon</label>
-      
-      <!--Hipoge -> agua
+    <input type="radio" name="mascota" id="langostelvis" />
+    <label class="tajeta-de-kopemon" for="langostelvis">Langostelvis</label>
+
+    <input type="radio" name="mascota" id="tucalmat" />
+    <label class="tajeta-de-kopemon" for="tucalmat">Tucalmat</label>
+
+    <input type="radio" name="mascota" id="cucarachon" />
+    <label class="tajeta-de-kopemon" for="cucarachon">Cucarachon</label>
+
+    <!--Hipoge -> agua
       Capichu -> planta
       Ratigueya -> fuego
       Langostelvis -> agua y fuego
@@ -40,26 +39,28 @@
 
 
 
-      <button id="boton-mascota">seleccionar</button>
-    </section>
+    <button id="boton-mascota">seleccionar</button>
+  </section>
 
-    <section id="seleccionar-ataque">
-      <h2>Elige tu ataque</h2>
-      <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span>  vidas.</p>
-      <p>La mascota <span id="mascota-rival"></span> enemiga tiene <span id="vidas-rival">3</span> vidas.</p>
-      <p>
-        <button id="boton-fuego">Fuego 🔥</button>
-        <button id="boton-agua">Agua 💦</button>
-        <button id="boton-planta">Planta 🌱</button>
-      </p>
-    </section>
+  <section id="seleccionar-ataque">
+    <h1 class="titulo">Kopemon! 🌱🔥💦</h1>
+    <h2>Elige tu ataque</h2>
+    <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas.</p>
+    <p>La mascota <span id="mascota-rival"></span> enemiga tiene <span id="vidas-rival">3</span> vidas.</p>
+    <p>
+      <button id="boton-fuego">Fuego 🔥</button>
+      <button id="boton-agua">Agua 💦</button>
+      <button id="boton-planta">Planta 🌱</button>
+    </p>
+  </section>
 
-    <section id="mensajes">
-      
-    </section>
+  <section id="mensajes">
 
-    <section id="reiniciar">
-      <button id="boton-reiniciar">reiniciar</button>
-    </section>
-  </body>
+  </section>
+
+  <section id="reiniciar">
+    <button id="boton-reiniciar">reiniciar</button>
+  </section>
+</body>
+
 </html>
