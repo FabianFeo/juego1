@@ -4,7 +4,7 @@ let vidasJugador = 3;
 let vidasRival = 3;
 
 function iniciarJuego() {
-  
+
 
   let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
   sectionSeleccionarAtaque.style.display = "none";
@@ -36,7 +36,7 @@ function seleccionarMascotaJugador() {
   let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
   sectionSeleccionarAtaque.style.display = "block";
 
-  
+
 
 
 
@@ -100,19 +100,19 @@ function seleccionarMascotaRival() {
 
 function ataqueFuego() {
   ataqueJugador = "Fuego 🔥";
-  alert("Has atacado con " + ataqueJugador);
+
   ataqueEnemigo();
 }
 
 function ataqueAgua() {
   ataqueJugador = "Agua 💦";
-  alert("Has atacado con " + ataqueJugador);
+
   ataqueEnemigo();
 }
 
 function ataquePlanta() {
   ataqueJugador = "Planta 🌱";
-  alert("Has atacado con " + ataqueJugador);
+
   ataqueEnemigo();
 }
 
@@ -127,7 +127,7 @@ function ataqueEnemigo() {
     ataqueRival = "Planta 🌱";
   }
 
-  alert("El rival ha atacado con " + ataqueRival);
+
   combate(); // Llamar a combate después de definir ambos ataques
 }
 
@@ -172,19 +172,30 @@ function combate() {
 }
 
 function crearMensaje(resultado) {
-  let sectionMensajes = document.getElementById("mensajes");
-  let mensaje = document.createElement("p");
-  mensaje.innerHTML = "Has atacado con " +
-    ataqueJugador +
-    " y el rival ha atacado con " +
-    ataqueRival +
-    ". " +
-    resultado;
+  let sectionMensajes = document.getElementById("resultado");
+  let ataqueDelJugador = document.getElementById("ataqueDelJugador");
+  let ataqueDelRival = document.getElementById("ataqueDelRival");
+  let contenedorAtaques = document.querySelector(".contenedor-ataques");
 
+  // Asegúrate de que las columnas estén visibles al seleccionar un ataque
+  contenedorAtaques.style.display = "grid";
 
+  // Actualiza el resultado del combate
+  sectionMensajes.innerHTML = resultado;
 
-  sectionMensajes.appendChild(mensaje);
+  // Crea mensajes para el jugador y el rival
+  let nuevoAtaqueDelJugador = document.createElement("p");
+  let nuevoAtaqueDelRival = document.createElement("p");
+
+  nuevoAtaqueDelJugador.innerHTML = "Has atacado con " + ataqueJugador;
+  nuevoAtaqueDelRival.innerHTML = "El rival ha atacado con " + ataqueRival;
+
+  // Agrega los mensajes a las respectivas columnas
+  ataqueDelJugador.appendChild(nuevoAtaqueDelJugador);
+  ataqueDelRival.appendChild(nuevoAtaqueDelRival);
 }
+
+
 
 function revisarVidas() {
   if (vidasJugador === 0) {
@@ -205,23 +216,31 @@ function deshabilitarBotones() {
 
 
 function crearMensajeFinal(resultadoFinal) {
-  let sectionMensajes = document.getElementById("mensajes");
+  // Limpia los mensajes anteriores
+  let sectionMensajes = document.getElementById("resultado");
+  let ataqueDelJugador = document.getElementById("ataqueDelJugador");
+  let ataqueDelRival = document.getElementById("ataqueDelRival");
 
-  
+  sectionMensajes.innerHTML = ""; // Borra cualquier mensaje previo
+  ataqueDelJugador.innerHTML = ""; // Limpia el ataque del jugador
+  ataqueDelRival.innerHTML = ""; // Limpia el ataque del rival
 
+  // Crea y muestra el mensaje final
   let parrafo = document.createElement("p");
   parrafo.innerHTML = resultadoFinal;
   parrafo.style.fontWeight = "bold";
   parrafo.style.color = "red";
   sectionMensajes.appendChild(parrafo);
 
+  // Muestra el botón de reiniciar
   let botonReiniciar = document.getElementById("reiniciar");
   botonReiniciar.style.display = "block";
 }
 
 
 
-function reiniciarJuego (){
+
+function reiniciarJuego() {
   location.reload();
 }
 
@@ -230,5 +249,7 @@ function random(min, max) {
 }
 
 window.addEventListener("load", iniciarJuego);
+
+
 
 

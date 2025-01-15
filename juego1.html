@@ -41,6 +41,7 @@
 
 
 
+
     <!--Hipoge -> agua
       Capichu -> planta
       Ratigueya -> fuego
@@ -56,20 +57,39 @@
   <section id="seleccionar-ataque">
     <h1 class="titulo">Kopemon! 🌱🔥💦</h1>
     <h2>Elige tu ataque:</h2>
-    <p class="mensaje-vidas">Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span>
-      vidas.</p>
-    <p class="mensaje-vidas">La mascota <span id="mascota-rival"></span> enemiga tiene <span id="vidas-rival">3</span>
-      vidas.</p>
-    <p>
-      <button class="tarjeta-ataque" id="boton-fuego">Fuego 🔥</button>
-      <button class="tarjeta-ataque" id="boton-agua">Agua 💦</button>
-      <button class="tarjeta-ataque" id="boton-planta">Planta 🌱</button>
+    <div>
+
+      <p class="mensaje-vidas">Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span>
+        vidas.</p>
+      <p class="mensaje-vidas">La mascota <span id="mascota-rival"></span> enemiga tiene <span id="vidas-rival">3</span>
+        vidas.</p>
+
+
+
+
+    </div>
+
+    <button class="tarjeta-ataque" id="boton-fuego">Fuego 🔥</button>
+    <button class="tarjeta-ataque" id="boton-agua">Agua 💦</button>
+    <button class="tarjeta-ataque" id="boton-planta">Planta 🌱</button>
     </p>
   </section>
 
   <section id="mensajes">
-
+    <div id="resultado"></div>
+    <div class="contenedor-ataques">
+      <div id="ataqueDelJugador" class="columna-ataque">
+        <h3>Jugador</h3>
+      </div>
+      <div id="ataqueDelRival" class="columna-ataque">
+        <h3>Rival</h3>
+      </div>
+    </div>
   </section>
+
+
+
+
 
   <section id="reiniciar">
     <button class="selector" id="boton-reiniciar">reiniciar</button>

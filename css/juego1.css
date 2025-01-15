@@ -44,12 +44,15 @@ h2 {
 	padding: 2rem;
 	margin: 2rem;
 }
-.tarjetas{
+
+.tarjetas {
 	display: flex;
 	justify-content: center;
 	gap: 10 px;
 }
 
+/* Estilo base para las tarjetas de las mascotas */
+/* Tarjetas de mascotas (estilo base) */
 .tajeta-de-kopemon {
 	background-color: var(--White);
 	border-radius: 10px;
@@ -57,12 +60,54 @@ h2 {
 	box-shadow: var(--box-shadow);
 	margin: 1rem;
 	padding: 1rem;
-
+	text-align: center;
+	transition: all 0.3s ease;
+	cursor: pointer;
 }
+
+/* Hover (al pasar el ratón) */
+.tajeta-de-kopemon:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+	/* Cambia ligeramente el fondo */
+	color: #0C6090;
+	/* Cambia el color del texto */
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+	/* Añade más sombra */
+	transform: scale(1.05);
+	/* Amplía ligeramente la tarjeta */
+}
+
+/* Estilo para la tarjeta seleccionada (cuando se hace clic) */
+input[type="radio"]:checked+.tajeta-de-kopemon {
+	background-color: rgba(255, 255, 255, 0.8);
+	/* Cambia ligeramente el fondo */
+	color: #0C6090;
+	/* Cambia el color del texto */
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+	/* Mantén la sombra intensa */
+	transform: scale(1.05);
+	/* Mantén el tamaño ampliado */
+}
+
+/* Cambiar imagen al seleccionar */
+input[type="radio"]:checked+.tajeta-de-kopemon img {
+	transform: scale(1.1);
+	/* Amplía la imagen dentro de la tarjeta */
+	transition: all 0.3s ease;
+}
+
+
+/* Opcional: Cambiar el estilo de la imagen al pasar sobre la tarjeta */
+.tajeta-de-kopemon:hover img {
+	transform: scale(1.1);
+	/* Amplía la imagen dentro de la tarjeta */
+	transition: all 0.3s ease;
+}
+
 
 .tajeta-de-kopemon img {
 	width: 160px;
-	
+
 }
 
 input {
@@ -105,4 +150,133 @@ input {
 	font-size: 1.5rem;
 	padding: 1rem;
 	margin: 1rem;
+}
+
+/* Estilo base para todos los botones */
+button {
+	background-color: var(--White);
+	border-radius: 20px;
+	border: var(--border-blur);
+	box-shadow: var(--box-shadow);
+	margin: 1%;
+	padding: 1%;
+	font-size: 10px;
+	font-family: 'Press Start 2P', cursive;
+	cursor: pointer;
+	/* Cambia el cursor a puntero */
+	transition: all 0.3s ease;
+	/* Suaviza las transiciones */
+}
+
+/* Efecto hover para todos los botones */
+button:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+	/* Cambia el fondo ligeramente */
+	color: #0C6090;
+	/* Cambia el color del texto */
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	/* Intensifica la sombra */
+	transform: scale(1.05);
+	/* Amplía ligeramente el botón */
+}
+
+
+
+
+/* Contenedor para los ataques */
+.contenedor-ataques {
+	display: none;
+	grid-template-columns: 1fr 1fr;
+	/* Divide en dos columnas iguales */
+	gap: 20px;
+	/* Espacio entre columnas */
+	margin-top: 20px;
+	text-align: center;
+}
+
+/* Estilo para cada columna */
+.columna-ataque {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: var(--border-blur);
+	border-radius: 10px;
+	box-shadow: var(--box-shadow);
+	padding: 10px;
+}
+
+/* Títulos de las columnas */
+.columna-ataque h3 {
+	margin-bottom: 10px;
+	font-size: 18px;
+	color: #0C6090;
+}
+
+/* Estilo para los mensajes dentro de las columnas */
+.columna-ataque p {
+	font-size: 16px;
+	margin: 5px 0;
+	color: #333;
+}
+
+@media (max-width: 720px){
+	.tarjetas, .tarjeta-ataque, .tajeta-de-kopemon  {
+		flex-direction: column;
+		align-items: center;
+	}
+	.tajeta-de-kopemon img {
+		width: 100px;
+	}
+	h1.titulo, h2, .mensaje-vidas, #mensajes {
+		text-align: center;
+	}
+}
+@media (max-width: 480px) {
+	
+	h1.titulo {
+		font-size: 2.5rem;
+		padding: 1.5rem;
+		margin: 1.5rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+		padding: 1rem;
+		margin: 1rem;
+	}
+	.tajeta-de-kopemon {
+		margin: 0.5rem;
+		padding: 0.5rem;
+	}
+	.tajeta-de-kopemon img {
+		width: 80px;
+	}
+	.mensaje-vidas, #mensajes {
+		font-size: 1rem;
+		padding: 0.5rem;
+		margin: 0.5rem;
+	}
+	.tarjeta-ataque {
+		margin: 1rem;
+		padding: 1rem;
+		font-size: 1rem;
+	}
+	.selector {
+		margin: 0.5%;
+		padding: 0.5%;
+		font-size: 8px;
+	}
+	button {
+		margin: 0.5%;
+		padding: 0.5%;
+		font-size: 8px;
+	}
+	.contenedor-ataques {
+		grid-template-columns: 1fr;
+		gap: 10px;
+		margin-top: 10px;
+	}
+	.columna-ataque h3 {
+		font-size: 16px;
+	}
+	.columna-ataque p {
+		font-size: 14px;
+	}
 }
