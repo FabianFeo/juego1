@@ -30,6 +30,8 @@ const sectionMensajes = document.getElementById("resultado");
 const ataqueDelJugador = document.getElementById("ataqueDelJugador");
 const ataqueDelRival = document.getElementById("ataqueDelRival");
 const contenedorAtaques = document.querySelector(".contenedor-ataques");
+const contenedorTarjetas = document.getElementById("contenedorTarjetas");
+
 
 
 let kopemones = [];
@@ -37,13 +39,15 @@ let kopemones = [];
 
 let ataqueJugador;
 let ataqueRival; // Variable global para almacenar el ataque del rival
+let opcionDeKopemones;
+
 let vidasJugador = 3;
 let vidasRival = 3;
 
 
 
-class Kopemon{
-  constructor(nombre, foto, vida){
+class Kopemon {
+  constructor(nombre, foto, vida) {
     this.nombre = nombre;
     this.foto = foto;
     this.vida = vida;
@@ -60,28 +64,28 @@ let cucarachon = new Kopemon("Cucarachon", "img/cucarachon.png", 3);
 kopemones.push(langostelvis, tucalmat, cucarachon);
 
 langostelvis.ataques.push(
-  {nombre: '💦', id: 'boton-agua'},
-  {nombre: '💦', id: 'boton-agua'},
-  {nombre: '💦', id: 'boton-agua'},
-  {nombre: '🌱', id: 'boton-planta'},
-  {nombre: '🔥', id: 'boton-fuego'}
+  { nombre: '💦', id: 'boton-agua' },
+  { nombre: '💦', id: 'boton-agua' },
+  { nombre: '💦', id: 'boton-agua' },
+  { nombre: '🌱', id: 'boton-planta' },
+  { nombre: '🔥', id: 'boton-fuego' }
 );
 
 tucalmat.ataques.push(
-  {nombre: '🌱', id: 'boton-agua'},
-  {nombre: '🌱', id: 'boton-agua'},
-  {nombre: '🌱', id: 'boton-agua'},
-  {nombre: '💦', id: 'boton-planta'},
-  {nombre: '🔥', id: 'boton-fuego'}
+  { nombre: '🌱', id: 'boton-agua' },
+  { nombre: '🌱', id: 'boton-agua' },
+  { nombre: '🌱', id: 'boton-agua' },
+  { nombre: '💦', id: 'boton-planta' },
+  { nombre: '🔥', id: 'boton-fuego' }
 );
 
 
 langostelvis.ataques.push(
-  {nombre: '🔥', id: 'boton-agua'},
-  {nombre: '🔥', id: 'boton-agua'},
-  {nombre: '🔥', id: 'boton-agua'},
-  {nombre: '🌱', id: 'boton-planta'},
-  {nombre: '💦', id: 'boton-fuego'}
+  { nombre: '🔥', id: 'boton-agua' },
+  { nombre: '🔥', id: 'boton-agua' },
+  { nombre: '🔥', id: 'boton-agua' },
+  { nombre: '🌱', id: 'boton-planta' },
+  { nombre: '💦', id: 'boton-fuego' }
 );
 
 
@@ -102,7 +106,19 @@ function seleccionarMascotaJugador() {
   sectionSeleccionarAtaque.style.display = "block";
 
 
-  kop
+  kopemones.forEach((kopemon) => {
+    opcionDeKopemones = `
+    <input type="radio" name="mascota" id="${kopemon.nombre}" />
+    <label class="tarjeta-de-kopemon" for="${kopemon.nombre}">
+      <p>${kopemon.nombre}</p>
+      <img src="${kopemon.foto}" alt="${kopemon.nombre}">
+    </label>
+    `;
+
+    contenedorTarjetas.innerHTML += opcionDeKopemones;
+  });
+
+
 
   if (inputLangostelvis.checked) {
     spanMascotaJugador.innerHTML = "Langostelvis";
