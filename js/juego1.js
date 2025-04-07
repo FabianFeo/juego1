@@ -1,134 +1,71 @@
-const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
-const sectionReiniciar = document.getElementById("reiniciar");
-const botonMascotaJugador = document.getElementById("boton-mascota");
-const botonFuego = document.getElementById("boton-fuego");
-const botonAgua = document.getElementById("boton-agua");
-const botonPlanta = document.getElementById("boton-planta");
-const botonReiniciar = document.getElementById("boton-reiniciar");
-
-
-
-const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
-
-
-const inputLangostelvis = document.getElementById("langostelvis");
-const inputTucalmat = document.getElementById("tucalmat");
-const inputCucarachon = document.getElementById("cucarachon");
-const spanMascotaJugador = document.getElementById("mascota-jugador");
-
-
-const spanMascotaRival = document.getElementById("mascota-rival");
-
-
-const spanVidasJugador = document.getElementById("vidas-jugador");
-const spanVidasRival = document.getElementById("vidas-rival");
-let resultado;
-
-
-
-const sectionMensajes = document.getElementById("resultado");
-const ataqueDelJugador = document.getElementById("ataqueDelJugador");
-const ataqueDelRival = document.getElementById("ataqueDelRival");
-const contenedorAtaques = document.querySelector(".contenedor-ataques");
-const contenedorTarjetas = document.getElementById("contenedorTarjetas");
-
-
-
-let kopemones = [];
-
-
 let ataqueJugador;
 let ataqueRival; // Variable global para almacenar el ataque del rival
-let opcionDeKopemones;
-
 let vidasJugador = 3;
 let vidasRival = 3;
 
-
-
-class Kopemon {
-  constructor(nombre, foto, vida) {
-    this.nombre = nombre;
-    this.foto = foto;
-    this.vida = vida;
-    this.ataques = [];
-  }
-}
-
-
-let langostelvis = new Kopemon("Langostelvis", "img/langostelvis.png", 3);
-let tucalmat = new Kopemon("Tucalmat", "img/tucalmat.png", 3);
-let cucarachon = new Kopemon("Cucarachon", "img/cucarachon.png", 3);
-
-
-kopemones.push(langostelvis, tucalmat, cucarachon);
-
-langostelvis.ataques.push(
-  { nombre: '💦', id: 'boton-agua' },
-  { nombre: '💦', id: 'boton-agua' },
-  { nombre: '💦', id: 'boton-agua' },
-  { nombre: '🌱', id: 'boton-planta' },
-  { nombre: '🔥', id: 'boton-fuego' }
-);
-
-tucalmat.ataques.push(
-  { nombre: '🌱', id: 'boton-agua' },
-  { nombre: '🌱', id: 'boton-agua' },
-  { nombre: '🌱', id: 'boton-agua' },
-  { nombre: '💦', id: 'boton-planta' },
-  { nombre: '🔥', id: 'boton-fuego' }
-);
-
-
-langostelvis.ataques.push(
-  { nombre: '🔥', id: 'boton-agua' },
-  { nombre: '🔥', id: 'boton-agua' },
-  { nombre: '🔥', id: 'boton-agua' },
-  { nombre: '🌱', id: 'boton-planta' },
-  { nombre: '💦', id: 'boton-fuego' }
-);
-
-
-kopemones.push(langostelvis, tucalmat, cucarachon);
-
 function iniciarJuego() {
+
+
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
   sectionSeleccionarAtaque.style.display = "none";
+
+  let sectionReiniciar = document.getElementById("reiniciar");
   sectionReiniciar.style.display = "none";
+
+  let botonMascotaJugador = document.getElementById("boton-mascota");
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
+
+  let botonFuego = document.getElementById("boton-fuego");
   botonFuego.addEventListener("click", ataqueFuego);
+  let botonAgua = document.getElementById("boton-agua");
   botonAgua.addEventListener("click", ataqueAgua);
+  let botonPlanta = document.getElementById("boton-planta");
   botonPlanta.addEventListener("click", ataquePlanta);
+
+
+  let botonReiniciar = document.getElementById("boton-reiniciar");
   botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function seleccionarMascotaJugador() {
+
+  let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
   sectionSeleccionarMascota.style.display = "none";
+
+
+  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
   sectionSeleccionarAtaque.style.display = "block";
 
 
-  kopemones.forEach((kopemon) => {
-    opcionDeKopemones = `
-    <input type="radio" name="mascota" id="${kopemon.nombre}" />
-    <label class="tarjeta-de-kopemon" for="${kopemon.nombre}">
-      <p>${kopemon.nombre}</p>
-      <img src="${kopemon.foto}" alt="${kopemon.nombre}">
-    </label>
-    `;
-
-    contenedorTarjetas.innerHTML += opcionDeKopemones;
-  });
 
 
 
-  if (inputLangostelvis.checked) {
+  let inputHipoge = document.getElementById("hipoge");
+  let inputCapichu = document.getElementById("capichu");
+  let inputRatigueya = document.getElementById("ratigueya");
+  let inputLangostelvis = document.getElementById("langostelvis");
+  let inputTucalmat = document.getElementById("tucalmat");
+  let inputCucarachon = document.getElementById("cucarachon");
+  let spanMascotaJugador = document.getElementById("mascota-jugador");
+
+  if (inputHipoge.checked) {
+    spanMascotaJugador.innerHTML = "Hipoge";
+    alert("Has seleccionado a Hipoge");
+  } else if (inputCapichu.checked) {
+    spanMascotaJugador.innerHTML = "Capichu";
+    alert("Has seleccionado a Capichu");
+  } else if (inputRatigueya.checked) {
+    spanMascotaJugador.innerHTML = "Ratigueya";
+    alert("Has seleccionado a Ratigueya");
+  } else if (inputLangostelvis.checked) {
     spanMascotaJugador.innerHTML = "Langostelvis";
-
+    alert("Has seleccionado a Langostelvis");
   } else if (inputTucalmat.checked) {
     spanMascotaJugador.innerHTML = "Tucalmat";
-
+    alert("Has seleccionado a Tucalmat");
   } else if (inputCucarachon.checked) {
     spanMascotaJugador.innerHTML = "Cucarachon";
-
+    alert("Has seleccionado a Cucarachon");
   } else {
     alert("Debes seleccionar una mascota");
   }
@@ -136,22 +73,30 @@ function seleccionarMascotaJugador() {
   seleccionarMascotaRival();
 }
 
-
 function seleccionarMascotaRival() {
-  let numeroAleatorio = random(1, 3); // Solo genera números entre 1 y 3
+  let numeroAleatorio = random(1, 6);
+  let spanMascotaRival = document.getElementById("mascota-rival");
 
-  if (numeroAleatorio === 1) {
+  if (numeroAleatorio == 1) {
+    spanMascotaRival.innerHTML = "Hipoge";
+    alert("El rival ha seleccionado a Hipoge");
+  } else if (numeroAleatorio == 2) {
+    spanMascotaRival.innerHTML = "Capichu";
+    alert("El rival ha seleccionado a Capichu");
+  } else if (numeroAleatorio == 3) {
+    spanMascotaRival.innerHTML = "Ratigueya";
+    alert("El rival ha seleccionado a Ratigueya");
+  } else if (numeroAleatorio == 4) {
     spanMascotaRival.innerHTML = "Langostelvis";
-
-  } else if (numeroAleatorio === 2) {
+    alert("El rival ha seleccionado a Langostelvis");
+  } else if (numeroAleatorio == 5) {
     spanMascotaRival.innerHTML = "Tucalmat";
-    ;
-  } else if (numeroAleatorio === 3) {
+    alert("El rival ha seleccionado a Tucalmat");
+  } else if (numeroAleatorio == 6) {
     spanMascotaRival.innerHTML = "Cucarachon";
-
+    alert("El rival ha seleccionado a Cucarachon");
   }
 }
-
 
 function ataqueFuego() {
   ataqueJugador = "Fuego 🔥";
@@ -187,7 +132,9 @@ function ataqueEnemigo() {
 }
 
 function combate() {
-
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasRival = document.getElementById("vidas-rival");
+  let resultado;
 
   if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Agua 💦") {
     resultado = "Has perdido";
@@ -225,7 +172,10 @@ function combate() {
 }
 
 function crearMensaje(resultado) {
-
+  let sectionMensajes = document.getElementById("resultado");
+  let ataqueDelJugador = document.getElementById("ataqueDelJugador");
+  let ataqueDelRival = document.getElementById("ataqueDelRival");
+  let contenedorAtaques = document.querySelector(".contenedor-ataques");
 
   // Asegúrate de que las columnas estén visibles al seleccionar un ataque
   contenedorAtaques.style.display = "grid";
@@ -267,7 +217,9 @@ function deshabilitarBotones() {
 
 function crearMensajeFinal(resultadoFinal) {
   // Limpia los mensajes anteriores
-
+  let sectionMensajes = document.getElementById("resultado");
+  let ataqueDelJugador = document.getElementById("ataqueDelJugador");
+  let ataqueDelRival = document.getElementById("ataqueDelRival");
 
   sectionMensajes.innerHTML = ""; // Borra cualquier mensaje previo
   ataqueDelJugador.innerHTML = ""; // Limpia el ataque del jugador
@@ -297,7 +249,4 @@ function random(min, max) {
 }
 
 window.addEventListener("load", iniciarJuego);
-
-
-
 

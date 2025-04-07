@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juego # 1</title>
-
+  <script src="js/juego1.js"></script>
   <link rel="stylesheet" href="css/juego1.css" />
 
 </head>
@@ -18,9 +18,25 @@
     <h2>Elige a tu mascota:</h2>
 
 
-    <div id="contenedorTarjetas" class="tarjetas">
+    <div class="tarjetas">
+      <input type="radio" name="mascota" id="langostelvis" />
+      <label class="tajeta-de-kopemon" for="langostelvis">
+        <p>Langostelvis</p>
+        <img src="images/langostelvis.png" alt="Langostelvis">
+      </label>
+
+      <input type="radio" name="mascota" id="tucalmat" />
+      <label class="tajeta-de-kopemon" for="tucalmat">
+        <p>Tucalmat</p>
+        <img src="images/tucalmat.png" alt="Tucalmat">
+      </label>
+
+      <input type="radio" name="mascota" id="cucarachon" />
+      <label class="tajeta-de-kopemon" for="cucarachon">
+        <p>Cucarachon</p>
+        <img src="images/cucarachon.png" alt="Cucarachon">
+      </label>
     </div>
-    
 
 
 
@@ -78,7 +94,6 @@
   <section id="reiniciar">
     <button class="selector" id="boton-reiniciar">reiniciar</button>
   </section>
-  <script src="js/juego1.js"></script>
 </body>
 
 </html>
