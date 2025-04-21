@@ -35,6 +35,22 @@ let ataqueRival; // Variable global para almacenar el ataque del rival
 let vidasJugador = 3;
 let vidasRival = 3;
 
+
+class Kopemon {
+  constructor(nombre, foto, vida) {
+    this.nombre = nombre;
+    this.foto = foto;
+    this.vida = vida;
+    
+  }
+}
+
+  let langostelvis = new Kopemon("Langostelvis", "./assets/langostelvis.png", 3);
+  let tucalmat = new Kopemon("Tucalmat", "./assets/tucalmat.png", 3);
+  let cucarachon = new Kopemon("Cucarachon", "./assets/cucarachon.png", 3);
+
+ 
+
 function iniciarJuego() {
 
   sectionSeleccionarAtaque.style.display = "none";
@@ -60,16 +76,7 @@ function seleccionarMascotaJugador() {
 
   sectionSeleccionarAtaque.style.display = "block";
 
-  if (inputHipoge.checked) {
-    spanMascotaJugador.innerHTML = "Hipoge";
-    alert("Has seleccionado a Hipoge");
-  } else if (inputCapichu.checked) {
-    spanMascotaJugador.innerHTML = "Capichu";
-    alert("Has seleccionado a Capichu");
-  } else if (inputRatigueya.checked) {
-    spanMascotaJugador.innerHTML = "Ratigueya";
-    alert("Has seleccionado a Ratigueya");
-  } else if (inputLangostelvis.checked) {
+  if  (inputLangostelvis.checked) {
     spanMascotaJugador.innerHTML = "Langostelvis";
     alert("Has seleccionado a Langostelvis");
   } else if (inputTucalmat.checked) {
