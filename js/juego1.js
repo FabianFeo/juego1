@@ -29,7 +29,7 @@ const ataqueDelJugador = document.getElementById("ataqueDelJugador");
 const ataqueDelRival = document.getElementById("ataqueDelRival");
 const contenedorAtaques = document.querySelector(".contenedor-ataques");
 
-
+let kopemones = [];
 let ataqueJugador;
 let ataqueRival; // Variable global para almacenar el ataque del rival
 let vidasJugador = 3;
@@ -41,15 +41,17 @@ class Kopemon {
     this.nombre = nombre;
     this.foto = foto;
     this.vida = vida;
-    
+
   }
 }
 
-  let langostelvis = new Kopemon("Langostelvis", "./assets/langostelvis.png", 3);
-  let tucalmat = new Kopemon("Tucalmat", "./assets/tucalmat.png", 3);
-  let cucarachon = new Kopemon("Cucarachon", "./assets/cucarachon.png", 3);
+let langostelvis = new Kopemon("Langostelvis", "./assets/langostelvis.png", 3);
+let tucalmat = new Kopemon("Tucalmat", "./assets/tucalmat.png", 3);
+let cucarachon = new Kopemon("Cucarachon", "./assets/cucarachon.png", 3);
 
- 
+kopemones.push(langostelvis, tucalmat, cucarachon);
+
+
 
 function iniciarJuego() {
 
@@ -76,7 +78,7 @@ function seleccionarMascotaJugador() {
 
   sectionSeleccionarAtaque.style.display = "block";
 
-  if  (inputLangostelvis.checked) {
+  if (inputLangostelvis.checked) {
     spanMascotaJugador.innerHTML = "Langostelvis";
     alert("Has seleccionado a Langostelvis");
   } else if (inputTucalmat.checked) {
@@ -232,7 +234,7 @@ function deshabilitarBotones() {
 
 function crearMensajeFinal(resultadoFinal) {
   // Limpia los mensajes anteriores
-  
+
 
   sectionMensajes.innerHTML = ""; // Borra cualquier mensaje previo
   ataqueDelJugador.innerHTML = ""; // Limpia el ataque del jugador
@@ -246,7 +248,7 @@ function crearMensajeFinal(resultadoFinal) {
   sectionMensajes.appendChild(parrafo);
 
   // Muestra el botón de reiniciar
- 
+
   sectionReiniciar.style.display = "block";
 }
 
