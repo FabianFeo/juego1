@@ -1,28 +1,33 @@
-let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
-let sectionReiniciar = document.getElementById("reiniciar");
-let botonMascotaJugador = document.getElementById("boton-mascota");
-let botonFuego = document.getElementById("boton-fuego");
-let botonAgua = document.getElementById("boton-agua");
-let botonPlanta = document.getElementById("boton-planta");
-let botonReiniciar = document.getElementById("boton-reiniciar");
+const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+const sectionReiniciar = document.getElementById("reiniciar");
+const botonMascotaJugador = document.getElementById("boton-mascota");
+const botonFuego = document.getElementById("boton-fuego");
+const botonAgua = document.getElementById("boton-agua");
+const botonPlanta = document.getElementById("boton-planta");
+const botonReiniciar = document.getElementById("boton-reiniciar");
 
 
-  let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
+const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
 
-let inputHipoge = document.getElementById("hipoge");
-let inputCapichu = document.getElementById("capichu");
-let inputRatigueya = document.getElementById("ratigueya");
-let inputLangostelvis = document.getElementById("langostelvis");
-let inputTucalmat = document.getElementById("tucalmat");
-let inputCucarachon = document.getElementById("cucarachon");
-let spanMascotaJugador = document.getElementById("mascota-jugador");
+const inputHipoge = document.getElementById("hipoge");
+const inputCapichu = document.getElementById("capichu");
+const inputRatigueya = document.getElementById("ratigueya");
+const inputLangostelvis = document.getElementById("langostelvis");
+const inputTucalmat = document.getElementById("tucalmat");
+const inputCucarachon = document.getElementById("cucarachon");
+const spanMascotaJugador = document.getElementById("mascota-jugador");
 
 
 
-let spanMascotaRival = document.getElementById("mascota-rival");
+const spanMascotaRival = document.getElementById("mascota-rival");
 
-let spanVidasJugador = document.getElementById("vidas-jugador");
-let spanVidasRival = document.getElementById("vidas-rival");
+const spanVidasJugador = document.getElementById("vidas-jugador");
+const spanVidasRival = document.getElementById("vidas-rival");
+
+const sectionMensajes = document.getElementById("resultado");
+const ataqueDelJugador = document.getElementById("ataqueDelJugador");
+const ataqueDelRival = document.getElementById("ataqueDelRival");
+const contenedorAtaques = document.querySelector(".contenedor-ataques");
 
 
 let ataqueJugador;
@@ -39,7 +44,7 @@ function iniciarJuego() {
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
   botonFuego.addEventListener("click", ataqueFuego);
-  
+
   botonAgua.addEventListener("click", ataqueAgua);
 
   botonPlanta.addEventListener("click", ataquePlanta);
@@ -50,9 +55,9 @@ function iniciarJuego() {
 }
 
 function seleccionarMascotaJugador() {
-  
+
   sectionSeleccionarMascota.style.display = "none";
-  
+
   sectionSeleccionarAtaque.style.display = "block";
 
   if (inputHipoge.checked) {
@@ -82,7 +87,7 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMascotaRival() {
   let numeroAleatorio = random(1, 6);
-  
+
 
   if (numeroAleatorio == 1) {
     spanMascotaRival.innerHTML = "Hipoge";
@@ -139,7 +144,7 @@ function ataqueEnemigo() {
 }
 
 function combate() {
-  
+
   let resultado;
 
   if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Agua 💦") {
@@ -178,10 +183,7 @@ function combate() {
 }
 
 function crearMensaje(resultado) {
-  let sectionMensajes = document.getElementById("resultado");
-  let ataqueDelJugador = document.getElementById("ataqueDelJugador");
-  let ataqueDelRival = document.getElementById("ataqueDelRival");
-  let contenedorAtaques = document.querySelector(".contenedor-ataques");
+
 
   // Asegúrate de que las columnas estén visibles al seleccionar un ataque
   contenedorAtaques.style.display = "grid";
@@ -223,9 +225,7 @@ function deshabilitarBotones() {
 
 function crearMensajeFinal(resultadoFinal) {
   // Limpia los mensajes anteriores
-  let sectionMensajes = document.getElementById("resultado");
-  let ataqueDelJugador = document.getElementById("ataqueDelJugador");
-  let ataqueDelRival = document.getElementById("ataqueDelRival");
+  
 
   sectionMensajes.innerHTML = ""; // Borra cualquier mensaje previo
   ataqueDelJugador.innerHTML = ""; // Limpia el ataque del jugador
@@ -239,8 +239,8 @@ function crearMensajeFinal(resultadoFinal) {
   sectionMensajes.appendChild(parrafo);
 
   // Muestra el botón de reiniciar
-  let botonReiniciar = document.getElementById("reiniciar");
-  botonReiniciar.style.display = "block";
+ 
+  sectionReiniciar.style.display = "block";
 }
 
 
