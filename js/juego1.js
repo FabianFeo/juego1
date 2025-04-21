@@ -2,8 +2,27 @@ let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
 let sectionReiniciar = document.getElementById("reiniciar");
 let botonMascotaJugador = document.getElementById("boton-mascota");
 let botonFuego = document.getElementById("boton-fuego");
+let botonAgua = document.getElementById("boton-agua");
 let botonPlanta = document.getElementById("boton-planta");
 let botonReiniciar = document.getElementById("boton-reiniciar");
+
+
+  let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
+
+let inputHipoge = document.getElementById("hipoge");
+let inputCapichu = document.getElementById("capichu");
+let inputRatigueya = document.getElementById("ratigueya");
+let inputLangostelvis = document.getElementById("langostelvis");
+let inputTucalmat = document.getElementById("tucalmat");
+let inputCucarachon = document.getElementById("cucarachon");
+let spanMascotaJugador = document.getElementById("mascota-jugador");
+
+
+
+let spanMascotaRival = document.getElementById("mascota-rival");
+
+let spanVidasJugador = document.getElementById("vidas-jugador");
+let spanVidasRival = document.getElementById("vidas-rival");
 
 
 let ataqueJugador;
@@ -13,48 +32,28 @@ let vidasRival = 3;
 
 function iniciarJuego() {
 
-
-  
   sectionSeleccionarAtaque.style.display = "none";
 
-  
   sectionReiniciar.style.display = "none";
 
-  
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
-  
   botonFuego.addEventListener("click", ataqueFuego);
-  let botonAgua = document.getElementById("boton-agua");
-  botonAgua.addEventListener("click", ataqueAgua);
   
+  botonAgua.addEventListener("click", ataqueAgua);
+
   botonPlanta.addEventListener("click", ataquePlanta);
 
 
-  
+
   botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function seleccionarMascotaJugador() {
-
-  let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
+  
   sectionSeleccionarMascota.style.display = "none";
-
-
-  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  
   sectionSeleccionarAtaque.style.display = "block";
-
-
-
-
-
-  let inputHipoge = document.getElementById("hipoge");
-  let inputCapichu = document.getElementById("capichu");
-  let inputRatigueya = document.getElementById("ratigueya");
-  let inputLangostelvis = document.getElementById("langostelvis");
-  let inputTucalmat = document.getElementById("tucalmat");
-  let inputCucarachon = document.getElementById("cucarachon");
-  let spanMascotaJugador = document.getElementById("mascota-jugador");
 
   if (inputHipoge.checked) {
     spanMascotaJugador.innerHTML = "Hipoge";
@@ -83,7 +82,7 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMascotaRival() {
   let numeroAleatorio = random(1, 6);
-  let spanMascotaRival = document.getElementById("mascota-rival");
+  
 
   if (numeroAleatorio == 1) {
     spanMascotaRival.innerHTML = "Hipoge";
@@ -140,8 +139,7 @@ function ataqueEnemigo() {
 }
 
 function combate() {
-  let spanVidasJugador = document.getElementById("vidas-jugador");
-  let spanVidasRival = document.getElementById("vidas-rival");
+  
   let resultado;
 
   if (ataqueJugador === "Fuego 🔥" && ataqueRival === "Agua 💦") {
