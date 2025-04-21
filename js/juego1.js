@@ -1,3 +1,11 @@
+let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+let sectionReiniciar = document.getElementById("reiniciar");
+let botonMascotaJugador = document.getElementById("boton-mascota");
+let botonFuego = document.getElementById("boton-fuego");
+let botonPlanta = document.getElementById("boton-planta");
+let botonReiniciar = document.getElementById("boton-reiniciar");
+
+
 let ataqueJugador;
 let ataqueRival; // Variable global para almacenar el ataque del rival
 let vidasJugador = 3;
@@ -6,24 +14,24 @@ let vidasRival = 3;
 function iniciarJuego() {
 
 
-  let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+  
   sectionSeleccionarAtaque.style.display = "none";
 
-  let sectionReiniciar = document.getElementById("reiniciar");
+  
   sectionReiniciar.style.display = "none";
 
-  let botonMascotaJugador = document.getElementById("boton-mascota");
+  
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
-  let botonFuego = document.getElementById("boton-fuego");
+  
   botonFuego.addEventListener("click", ataqueFuego);
   let botonAgua = document.getElementById("boton-agua");
   botonAgua.addEventListener("click", ataqueAgua);
-  let botonPlanta = document.getElementById("boton-planta");
+  
   botonPlanta.addEventListener("click", ataquePlanta);
 
 
-  let botonReiniciar = document.getElementById("boton-reiniciar");
+  
   botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
