@@ -28,10 +28,13 @@ const sectionMensajes = document.getElementById("resultado");
 const ataqueDelJugador = document.getElementById("ataqueDelJugador");
 const ataqueDelRival = document.getElementById("ataqueDelRival");
 const contenedorAtaques = document.querySelector(".contenedor-ataques");
+const contenedorTarjetas = document.getElementById("contenedorTarjetas");
 
 let kopemones = [];
+let opcionDeKopemon;
+
 let ataqueJugador;
-let ataqueRival; // Variable global para almacenar el ataque del rival
+let ataqueRival;
 let vidasJugador = 3;
 let vidasRival = 3;
 
@@ -41,21 +44,55 @@ class Kopemon {
     this.nombre = nombre;
     this.foto = foto;
     this.vida = vida;
+    this.ataques = [];
 
   }
 }
 
-let langostelvis = new Kopemon("Langostelvis", "./assets/langostelvis.png", 3);
-let tucalmat = new Kopemon("Tucalmat", "./assets/tucalmat.png", 3);
-let cucarachon = new Kopemon("Cucarachon", "./assets/cucarachon.png", 3);
+let langostelvis = new Kopemon("Langostelvis", "./images/langostelvis.png", 3);
+let tucalmat = new Kopemon("Tucalmat", "./images/tucalmat.png", 3);
+let cucarachon = new Kopemon("Cucarachon", "./images/cucarachon.png", 3);
 
 kopemones.push(langostelvis, tucalmat, cucarachon);
 
+
+langostelvis.ataques.push(
+  { nombre: "Fuego 🔥", id: "boton-fuego" },
+  { nombre: "Agua 💦", id: "boton-agua" },
+  { nombre: "Planta 🌱", id: "boton-planta" },
+  { nombre: "Agua 💦", id: "boton-agua" }
+)
+tucalmat.ataques.push(
+  { nombre: "Fuego 🔥", id: "boton-fuego" },
+  { nombre: "Fuego 🔥", id: "boton-fuego" },
+  { nombre: "Agua 💦", id: "boton-agua" },
+  { nombre: "Planta 🌱", id: "boton-planta" }
+)
+cucarachon.ataques.push(
+  { nombre: "Fuego 🔥", id: "boton-fuego" },
+  { nombre: "Agua 💦", id: "boton-agua" },
+  { nombre: "Planta 🌱", id: "boton-planta" },
+  { nombre: "Planta 🌱", id: "boton-planta" }
+)
 
 
 function iniciarJuego() {
 
   sectionSeleccionarAtaque.style.display = "none";
+
+  kopemones.forEach((kopemon) => {
+    opcionDeKopemon = `
+        <input type="radio" name="mascota" id=${kopemon.nombre} />
+        <label class="tarjeta-de-mokepon" for=${kopemon.nombre}>
+            <p>${kopemon.nombre}</p>
+            <img src=${kopemon.foto} alt=${kopemon.nombre}>
+        </label>
+    `;
+
+    contenedorTarjetas.innerHTML += opcionDeKopemon;
+
+
+  },)
 
   sectionReiniciar.style.display = "none";
 
